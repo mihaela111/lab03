@@ -27,6 +27,10 @@ public class MainTest {
         displayImage(flipV(inputImg), "Flip V");
        displayImage(flipH(flipV(inputImg)), "Flip V+H");
 
-        displayImage(simpleSaltPepperNoise(inputImg,0.03d));
+        // displayImage(simpleSaltPepperNoise(inputImg,0.03d));
+
+        //gray levels generator
+        displayImage(grayLevelGenerator(200,20,1,400));
+
     }
 }
