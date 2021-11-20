@@ -181,6 +181,8 @@ public class ImageUtil {
 
         outImg=new BufferedImage(inImg.getWidth(),inImg.getHeight(), inImg.getType());
 
+        for (int band = 0; band < inImg.getRaster().getNumBands(); band++)
+
 
         for (int y = 0; y < inImg.getHeight(); y+=blockSize) {
 
