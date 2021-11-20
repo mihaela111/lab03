@@ -23,9 +23,9 @@ public class MainTest {
 //        displayImage(extractBandV2(inputImg, 2),"Bluev2");
         //displayImage(extractBandV2(inputImg, 3),"Alphav2");
 
-//        displayImage(flipH(inputImg), "Flip H");
-//        displayImage(flipV(inputImg), "Flip V");
-//        displayImage(flipH(flipV(inputImg)), "Flip V+H");
+       displayImage(flipH(inputImg), "Flip H");
+        displayImage(flipV(inputImg), "Flip V");
+       displayImage(flipH(flipV(inputImg)), "Flip V+H");
 
         displayImage(simpleSaltPepperNoise(inputImg,0.03d));
     }
