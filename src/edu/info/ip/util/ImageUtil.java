@@ -199,12 +199,56 @@ public class ImageUtil {
                             outImg.getRaster().setSample(x+xi, y+yi,0, grayLevel);
                         }
 
-
-
-
             }
 
         }
+
+        return outImg;
+    }
+
+    public static BufferedImage brightnessV1(BufferedImage inImg, int offset){
+        BufferedImage outImg= new BufferedImage(inImg.getWidth(), inImg.getHeight(), inImg.getType());
+
+        for (int band = 0; band <inImg.getRaster().getNumBands() ; band++)
+        for (int y = 0; y < inImg.getHeight(); y++) {
+            for (int x = 0; x < inImg.getWidth(); x++) {
+                int inGrayLevel=inImg.getRaster().getSample(x, y, band);
+                int outGrayLevel=constrain(inGrayLevel+offset);
+                outImg.getRaster().setSample(x,y,band,outGrayLevel);
+            }
+        }
+
+
+        return outImg;
+    }
+
+    public static int constrain(int val, int min, int max){
+        return val>max? max: (val<min? min:val);
+
+    }
+    public static int constrain(int val){
+        return constrain(val,0,255);
+    }
+    public static BufferedImage brightnessV2(BufferedImage inImg, int offset){
+        BufferedImage outImg= new BufferedImage(inImg.getWidth(), inImg.getHeight(), inImg.getType());
+
+        short[]brightnessLut=new short[256];
+        for (int i = 0; i < brightnessLut.length; i++) {
+            brightnessLut[1]=(short)constrain(i+offset);
+
+        }
+
+        for (int band = 0; band <inImg.getRaster().getNumBands() ; band++)
+
+
+        for (int y = 0; y < inImg.getHeight(); y++) {
+            for (int x = 0; x < inImg.getWidth(); x++) {
+                int inGrayLevel=inImg.getRaster().getSample(x, y, band);
+
+                outImg.getRaster().setSample(x,y,band, brightnessLut[inGrayLevel]);
+            }
+        }
+
 
         return outImg;
     }

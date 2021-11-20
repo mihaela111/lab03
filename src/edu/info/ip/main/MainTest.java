@@ -9,7 +9,7 @@ import static edu.info.ip.util.ImageUtil.*;
 public class MainTest {
 
     public static void main(String[] args) {
-        BufferedImage inputImg= loadImage("./test_images/lena_color_512.bmp");
+       BufferedImage inputImg= loadImage("./test_images/lena_color_512.bmp");
         //BufferedImage inputImg= loadImage("./test_images/lena_gray_512.bmp");
         displayImage(inputImg, "Original image");
         //displayImage(generateRandom(600,600),"Random Pixels");
@@ -35,7 +35,9 @@ public class MainTest {
    //     displayImage(grayLevels);
     //    saveImage(grayLevels, "./out_images/gray_levels_0_10_20_400.png", "png");
 
-        displayImage(pixelate(inputImg,4));
+        //displayImage(pixelate(inputImg,4));
+        displayImage(brightnessV1(inputImg,40));
+       // displayImage(brightnessV2(inputImg,40));
 
     }
 }
