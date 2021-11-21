@@ -3,6 +3,8 @@ package edu.info.ip.util;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.LookupOp;
+import java.awt.image.ShortLookupTable;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -253,5 +255,23 @@ public class ImageUtil {
 
 
         return outImg;
+    }
+
+    public static BufferedImage brightnessV3(BufferedImage inImg, int offset){
+        BufferedImage outImg=null;
+
+        outImg=new BufferedImage(inImg.getWidth(), inImg.getHeight(), inImg.getType());
+
+        short[] brightnessLUT=new short[256];
+        for (short i = 0; i < brightnessLUT.length; i++) {
+            brightnessLUT[i]=(short)constrain(i+offset);
+        }
+        ShortLookupTable lut= new ShortLookupTable(0,brightnessLUT);
+        LookupOp op= new LookupOp(lut, null);
+        op.filter(inImg,outImg);
+
+        return outImg;
+
+
     }
 }
