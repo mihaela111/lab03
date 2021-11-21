@@ -36,8 +36,8 @@ public class MainTest {
     //    saveImage(grayLevels, "./out_images/gray_levels_0_10_20_400.png", "png");
 
         //displayImage(pixelate(inputImg,4));
-        displayImage(brightnessV1(inputImg,40));
-       // displayImage(brightnessV2(inputImg,40));
+        //displayImage(brightnessV1(inputImg,40));
+       displayImage(brightnessV2(inputImg,40));
 
     }
 }

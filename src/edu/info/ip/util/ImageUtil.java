@@ -229,12 +229,14 @@ public class ImageUtil {
     public static int constrain(int val){
         return constrain(val,0,255);
     }
-    public static BufferedImage brightnessV2(BufferedImage inImg, int offset){
-        BufferedImage outImg= new BufferedImage(inImg.getWidth(), inImg.getHeight(), inImg.getType());
 
-        short[]brightnessLut=new short[256];
-        for (int i = 0; i < brightnessLut.length; i++) {
-            brightnessLut[1]=(short)constrain(i+offset);
+    public static BufferedImage brightnessV2(BufferedImage inImg, int offset){
+        BufferedImage outImg=null;
+       outImg= new BufferedImage(inImg.getWidth(), inImg.getHeight(), inImg.getType());
+
+        short[] brightnessLUT =new short[256];
+        for (int i = 0; i < brightnessLUT.length; i++) {
+            brightnessLUT[i]=(short)constrain(i+offset);
 
         }
 
@@ -245,7 +247,7 @@ public class ImageUtil {
             for (int x = 0; x < inImg.getWidth(); x++) {
                 int inGrayLevel=inImg.getRaster().getSample(x, y, band);
 
-                outImg.getRaster().setSample(x,y,band, brightnessLut[inGrayLevel]);
+                outImg.getRaster().setSample(x,y,band, brightnessLUT[inGrayLevel]);
             }
         }
 
